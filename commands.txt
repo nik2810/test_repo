@@ -1,0 +1,103 @@
+//Command with "git" - operate with files in git repository
+//Command withot "git" - operate with files in work folder
+
+*************************SETTINGS GIT*************************
+$ help
+$ git help
+
+//all settings  
+$ git config --list
+
+//sign in
+$ git config --global user.email "xxx@mail.ru"
+  git config --global user.name "nik2810"
+  git config --list
+  
+  
+*************************REMOTE REPOSITORY*************************
+	
+						ADD REMOTE REPO  (connect)
+  
+git remote add <shortname> <url>   							//shortname - name of remote repo
+git remote add origin git@github.com:nikname/project.git 	//create remote repo
+git remote 													//chek remote repos
+git remote -v 												//chek чтобы просмотреть адреса для чтения и записи, привязанные к репозиторию
+git remote rm origin 										//cancel connect
+
+						RECEIVE CHANGES
+
+//clone repositories 
+$ git clone <url>
+$ git clone https://github.com/schacon/ticgit
+
+$ git pull					//refresh files 1
+$ git fetch [remote-name] 	//refresh files 2 ???
+
+
+git remote show <remote> //more info about remote repo
+ 
+						SEND CHANGES				
+
+git push -u <shortname> master 	//publish your local commits
+git push
+
+git remote rename pb paul 	//rename remote repo
+$ git remote rm paul		//delete remote repo
+
+
+*************************LOCAL REPOSITORY*************************
+									
+git log												//log operations 
+git log --oneline
+git log --pretty
+git log -n 3 --oneline
+git log -p //show diff
+git log --stat //statictic
+git log --since="2018-03-05 23:21:00" --oneline
+git log --until="2018-03-05 23:21:00" --oneline
+git log --author="Writer" --oneline
+git log --grep="create" --oneline
+git log --pretty=format:"%h - %an, %ar : %s"
+
+git status 											//chek status work folder
+git status -v										//chek status work folder with changes
+
+git diff											//what changes in files (to stage)
+git ls-tree master	 								//files in git repo
+
+git init											//init new git repository
+
+git add ***.v										//choose files ready to commit (to stage)
+git add .
+git add –A
+git add –-all
+
+git commit -m "[message]  "							//commit files
+git commit -a -m "[message]  " 						//commit without add!
+
+git clean -df 										//clean other files
+
+git rm --cached main.c 								//delete file from cache
+git rm main.c										//remove file from git repo
+
+mv test_main_file.c test_main.c						//rename in work folder
+git mv test_main.c main.c							//rename in git repo
+
+git checkout -- main.c 								//copy file from local repo to work folder
+
+git commit --amend -m "third commit" 				//change commit (replace commit)
+
+cat .gitignore 										//list ignore files
+*.[oa]
+*~
+
+*************************WORK FOLDER*************************
+						
+mkdir repo											//make direcory
+cd repo												//change current direcory
+touch README.md 									//create file in repo
+echo "Project 51" > README.md 						//write text to file
+ls -la 												//list files
+ls													//list files
+cat HEAD 											//read file
+rm main.c											//remove file work folder
